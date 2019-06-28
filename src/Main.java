@@ -88,7 +88,7 @@ public class Main {
         Matrix testMatrixF = testMatrixB.mult(testMatrixA);
         System.out.println(testMatrixF.rowValues());
 
-        
+
         Vector testVectorC = new Vector();
         testVectorC.add(1);
         testVectorC.add(0);
