@@ -11,16 +11,24 @@ public class NoisyChannel {
         this.errors = errors;
     }
 
-    // Send a binary message (given as an Integer) through this channel
-    public Vector<Integer> send(Integer intendedMessage) {
+    // Converts a binary integer to a vector of binary characters
+    static Vector<Integer> integerToVector(Integer num) {
         // Convert Integer to String
-        String messageString = intendedMessage.toString();
+        String messageString = num.toString();
 
         // Convert the String to a Vector
         Vector messageVector = new Vector(messageString.length());
         for (int i = 0; i < messageString.length(); i++) {
             messageVector.add(Integer.parseInt(messageString.substring(i, i+1)));
         }
+
+        return messageVector;
+    }
+
+    // Send a binary message (given as an Integer) through this channel
+    public Vector<Integer> send(Integer intendedMessage) {
+        // Convert Integer to String
+        Vector<Integer> messageVector = NoisyChannel.integerToVector(intendedMessage);
 
         // Call send with the new Vector
         return this.send(messageVector);

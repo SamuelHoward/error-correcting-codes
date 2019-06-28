@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         //System.out.println("Hello World!");
-        /*
+
 
         // Testing NoisyChannel
         NoisyChannel testChannel = new NoisyChannel(2);
@@ -50,9 +50,9 @@ public class Main {
         System.out.println(testMatrix3.rows);
         System.out.println(testMatrix3.columns);
         System.out.println(testMatrix3.rowValues());
-        */
 
-        /*
+
+
 
 
         // Testing Mult
@@ -88,7 +88,7 @@ public class Main {
         Matrix testMatrixF = testMatrixB.mult(testMatrixA);
         System.out.println(testMatrixF.rowValues());
 
-        */
+        
         Vector testVectorC = new Vector();
         testVectorC.add(1);
         testVectorC.add(0);
