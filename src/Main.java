@@ -7,6 +7,7 @@ public class Main {
 
 
         // Testing NoisyChannel
+        /*
         NoisyChannel testChannel = new NoisyChannel(2);
         Vector testVector = new Vector();
         testVector.add(1);
@@ -119,5 +120,53 @@ public class Main {
         // Testing toBinary
         System.out.println(testMatrixI.rowValues());
         System.out.println(testMatrixI.toBinary().rowValues());
+
+        */
+        // Testing RepetitionCode
+        RepetitionCode RC1 = new RepetitionCode(1, 5);
+        System.out.println(RC1.generate().values);
+
+        System.out.println(RC1.encode(1));
+        System.out.println(RC1.encode(0));
+        Vector<Integer> oneVector = new Vector<Integer>(1);
+        oneVector.add(1);
+        System.out.println(RC1.encode(oneVector));
+        Vector<Integer> zeroVector = new Vector<Integer>(0);
+        zeroVector.add(0);
+        System.out.println(RC1.encode(zeroVector));
+
+        RepetitionCode RC2 = new RepetitionCode(2, 5);
+        Vector<Integer> oneZeroVector = new Vector<Integer>(2);
+        oneZeroVector.add(1);
+        oneZeroVector.add(0);
+        System.out.println(RC2.generate().values);
+        System.out.println(oneZeroVector);
+        System.out.println(RC2.encode(oneZeroVector));
+        Vector<Integer> oneOneVector = new Vector<Integer>(2);
+        oneOneVector.add(1);
+        oneOneVector.add(1);
+        System.out.println(oneOneVector);
+        System.out.println(RC2.encode(oneOneVector));
+        Vector<Integer> zeroZeroVector = new Vector<Integer>(2);
+        zeroZeroVector.add(0);
+        zeroZeroVector.add(0);
+        System.out.println(RC2.encode(zeroZeroVector));
+        Vector<Integer> zeroOneVector = new Vector<Integer>(2);
+        zeroOneVector.add(0);
+        zeroOneVector.add(1);
+        System.out.println(RC2.encode(zeroOneVector));
+
+        RepetitionCode RC3 = new RepetitionCode(8, 3);
+        Vector<Integer> byteVector = new Vector<Integer>(8);
+        byteVector.add(0);
+        byteVector.add(0);
+        byteVector.add(1);
+        byteVector.add(0);
+        byteVector.add(1);
+        byteVector.add(1);
+        byteVector.add(1);
+        byteVector.add(0);
+        System.out.println(RC3.encode(byteVector));
     }
+
 }

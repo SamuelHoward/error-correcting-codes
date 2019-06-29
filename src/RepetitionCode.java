@@ -28,8 +28,9 @@ public class RepetitionCode {
     }
 
     // Encodes a collection message
-    public Vector<Integer> encode(Collection message) {
-        return null;
+    public Vector<Integer> encode(Vector message) {
+        Matrix verticalVector = new Matrix(message, messageLength);
+        return verticalVector.mult(this.generate()).toVector();
     }
 
     // Decodes a message

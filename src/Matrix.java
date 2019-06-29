@@ -86,4 +86,15 @@ public class Matrix {
         return new Matrix(binaryValues, this.rows);
     }
 
+    // Convert this matrix to a vector
+    public Vector<Integer> toVector() {
+        Vector<Integer> result = new Vector<Integer>(this.rows*this.columns);
+        for(Integer i = 0; i < this.rows; i++) {
+            for (Integer j = 0; j < this.columns; j++) {
+                result.add(this.values.elementAt(j).elementAt(i));
+            }
+        }
+        return result;
+    }
+
 }
