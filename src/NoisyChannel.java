@@ -25,6 +25,17 @@ public class NoisyChannel {
         return messageVector;
     }
 
+    // Counts the amount of different entries between two vectors
+    static <X> Integer diffEntries(Vector<X> v1, Vector<X> v2) {
+        Integer diffCount = 0;
+        for(Integer i = 0; i < v1.size(); i++) {
+            if(!v1.elementAt(i).equals(v2.elementAt(i))) {
+                diffCount++;
+            }
+        }
+        return diffCount;
+    }
+
     // Send a binary message (given as an Integer) through this channel
     public Vector<Integer> send(Integer intendedMessage) {
         // Convert Integer to String
