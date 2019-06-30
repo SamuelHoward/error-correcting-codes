@@ -21,6 +21,18 @@ public class RepetitionCode {
         return new Matrix(generatorVals, 1);
     }
 
+    // Creates a CodeBook
+    public Matrix codeBook() {
+        Vector<Integer> codeBookValues = new Vector<Integer>(n*2);
+        for(Integer i = 0; i < n; i++) {
+            codeBookValues.add(1);
+        }
+        for(Integer i = 0; i < n; i++) {
+            codeBookValues.add(0);
+        }
+        return new Matrix(codeBookValues, 2);
+    }
+
     // Encodes an integer message
     public Vector<Integer> encode(Integer message) {
         Vector<Integer> messageVector = NoisyChannel.integerToVector(message);

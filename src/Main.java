@@ -167,6 +167,49 @@ public class Main {
         byteVector.add(1);
         byteVector.add(0);
         System.out.println(RC3.encode(byteVector));
+
+        // Testing diffEntries
+        Vector<Integer> v1 = new Vector<>(5);
+        v1.add(1);
+        v1.add(0);
+        v1.add(1);
+        v1.add(1);
+        v1.add(0);
+        Vector<Integer> v2 = new Vector<>(5);
+        v2.add(1);
+        v2.add(0);
+        v2.add(0);
+        v2.add(0);
+        v2.add(0);
+        System.out.println(NoisyChannel.diffEntries(v1, v2));
+        System.out.println(NoisyChannel.diffEntries(v1, v1));
+        System.out.println(NoisyChannel.diffEntries(v2, v2));
+        System.out.println(NoisyChannel.diffEntries(v2, v1));
+
+        // testing closestRow
+        Vector<Integer> testCodeBookValues = new Vector<Integer>(6);
+        testCodeBookValues.add(1);
+        testCodeBookValues.add(1);
+        testCodeBookValues.add(1);
+        testCodeBookValues.add(0);
+        testCodeBookValues.add(0);
+        testCodeBookValues.add(0);
+        Matrix testCodeBook = new Matrix(testCodeBookValues, 2);
+        Vector<Integer> testCode1 = new Vector<Integer>(3);
+        testCode1.add(1);
+        testCode1.add(0);
+        testCode1.add(1);
+        Vector<Integer> testCode2 = new Vector<Integer>(3);
+        testCode2.add(0);
+        testCode2.add(0);
+        testCode2.add(1);
+        System.out.println(testCodeBook.closestRow(testCode1));
+        System.out.println(testCodeBook.closestRow(testCode2));
+
+        // Testing codeBook
+        System.out.println(RC1.codeBook().rowValues());
+        System.out.println(RC2.codeBook().rowValues());
+        System.out.println(RC3.codeBook().rowValues());
     }
 
 }

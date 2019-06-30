@@ -97,4 +97,17 @@ public class Matrix {
         return result;
     }
 
+    // Finds the row in this matrix that is closest to the given vector
+    public Vector<Integer> closestRow(Vector<Integer> message) {
+        Integer closestIndex = 0;
+        Integer diffMin = message.size();
+        for(Integer i = 0; i < this.rowValues().size(); i++) {
+            if(NoisyChannel.diffEntries(this.rowValues().elementAt(i), message) < diffMin) {
+                diffMin = NoisyChannel.diffEntries(this.rowValues().elementAt(i), message);
+                closestIndex = i;
+            }
+        }
+        return this.rowValues().elementAt(closestIndex);
+    }
+
 }
