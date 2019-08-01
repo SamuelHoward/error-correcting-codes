@@ -14,8 +14,8 @@ public class RepetitionCode {
 
     // Creates a Generator Matrix
     public Matrix generate() {
-        Vector<Integer> generatorVals = new Vector<>(n);
-        for(Integer i = 0; i < n; i++) {
+        Vector<Integer> generatorVals = new Vector<>(this.n);
+        for(Integer i = 0; i < this.n; i++) {
             generatorVals.add(1);
         }
         return new Matrix(generatorVals, 1);
@@ -23,11 +23,11 @@ public class RepetitionCode {
 
     // Creates a CodeBook
     public Matrix codeBook() {
-        Vector<Integer> codeBookValues = new Vector<Integer>(n*2);
-        for(Integer i = 0; i < n; i++) {
+        Vector<Integer> codeBookValues = new Vector<Integer>(this.n*2);
+        for(Integer i = 0; i < this.n; i++) {
             codeBookValues.add(1);
         }
-        for(Integer i = 0; i < n; i++) {
+        for(Integer i = 0; i < this.n; i++) {
             codeBookValues.add(0);
         }
         return new Matrix(codeBookValues, 2);
@@ -41,9 +41,22 @@ public class RepetitionCode {
 
     // Encodes a collection message
     public Vector<Integer> encode(Vector message) {
-        Matrix verticalVector = new Matrix(message, messageLength);
+        Matrix verticalVector = new Matrix(message, this.messageLength);
         return verticalVector.mult(this.generate()).toVector();
     }
 
     // Decodes a message
+    public Vector<Integer> decode(Vector encodedMessage) {
+        Matrix messyMessage = new Matrix(encodedMessage, this.messageLength);
+        Vector<Integer> cleanMessageVector = new Vector(this.messageLength * this.n);
+        //System.out.println(messyMessage.rowValues());
+        for (Integer i = 0; i < messyMessage.rows; i++) {
+            //System.out.println(this.generate().closestRow(messyMessage.rowValues().elementAt(i)).firstElement());
+            //System.out.println(this.generate().closestRow(messyMessage.rowValues().elementAt(i)));
+            //System.out.println(messyMessage.rowValues().elementAt(i));
+            //System.out.println(this.generate().rowValues());
+            cleanMessageVector.add(this.codeBook().closestRow(messyMessage.rowValues().elementAt(i)).firstElement());
+        }
+        return cleanMessageVector;
+    }
 }

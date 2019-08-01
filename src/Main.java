@@ -181,10 +181,10 @@ public class Main {
         v2.add(0);
         v2.add(0);
         v2.add(0);
-        System.out.println(NoisyChannel.diffEntries(v1, v2));
-        System.out.println(NoisyChannel.diffEntries(v1, v1));
-        System.out.println(NoisyChannel.diffEntries(v2, v2));
-        System.out.println(NoisyChannel.diffEntries(v2, v1));
+        //System.out.println(NoisyChannel.diffEntries(v1, v2));
+        //System.out.println(NoisyChannel.diffEntries(v1, v1));
+        //System.out.println(NoisyChannel.diffEntries(v2, v2));
+        //System.out.println(NoisyChannel.diffEntries(v2, v1));
 
         // testing closestRow
         Vector<Integer> testCodeBookValues = new Vector<Integer>(6);
@@ -203,6 +203,7 @@ public class Main {
         testCode2.add(0);
         testCode2.add(0);
         testCode2.add(1);
+        System.out.println("closestRow");
         System.out.println(testCodeBook.closestRow(testCode1));
         System.out.println(testCodeBook.closestRow(testCode2));
 
@@ -210,6 +211,38 @@ public class Main {
         System.out.println(RC1.codeBook().rowValues());
         System.out.println(RC2.codeBook().rowValues());
         System.out.println(RC3.codeBook().rowValues());
+
+        // Testing decode
+        RC3.decode(RC3.encode(byteVector));
+        System.out.println(RC3.decode(RC3.encode(byteVector)));
+        System.out.println(RC2.encode(zeroZeroVector));
+        System.out.println(RC2.encode(zeroOneVector));
+        System.out.println(RC2.encode(oneOneVector));
+        System.out.println(RC2.encode(oneZeroVector));
+        System.out.println(RC2.decode(RC2.encode(zeroZeroVector)));
+        System.out.println(RC2.decode(RC2.encode(zeroOneVector)));
+        System.out.println(RC2.decode(RC2.encode(oneOneVector)));
+        System.out.println(RC2.decode(RC2.encode(oneZeroVector)));
+
+        // Complete testing of RepetitionCode
+        RepetitionCode RC = new RepetitionCode(8, 6);
+        Vector<Integer> BYTEMESSAGE = new Vector<>(8);
+        BYTEMESSAGE.add(1);
+        BYTEMESSAGE.add(0);
+        BYTEMESSAGE.add(1);
+        BYTEMESSAGE.add(0);
+        BYTEMESSAGE.add(1);
+        BYTEMESSAGE.add(0);
+        BYTEMESSAGE.add(1);
+        BYTEMESSAGE.add(0);
+        System.out.println(BYTEMESSAGE);
+        Vector<Integer> ENCODEDBYTEMESSAGE = RC.encode(BYTEMESSAGE);
+        System.out.println(ENCODEDBYTEMESSAGE);
+        NoisyChannel NC4RC = new NoisyChannel(10);
+        Vector<Integer> MESSYENCODEDBYTEMESSAGE = NC4RC.send(ENCODEDBYTEMESSAGE);
+        System.out.println(MESSYENCODEDBYTEMESSAGE);
+        Vector<Integer> DECODEDBYTEMESSAGE = RC.decode(MESSYENCODEDBYTEMESSAGE);
+        System.out.println(DECODEDBYTEMESSAGE);
     }
 
 }

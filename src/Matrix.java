@@ -55,8 +55,6 @@ public class Matrix {
         return rowVals;
     }
 
-
-
     // Multiply this matrix and the given matrix
     public Matrix mult(Matrix that) {
         Vector<Integer> productValues = new Vector<Integer>(this.rows * that.columns);

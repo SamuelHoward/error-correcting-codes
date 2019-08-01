@@ -64,7 +64,7 @@ public class NoisyChannel {
         Vector<Integer> sentVector = new Vector(intendedMessage);
         for (Integer index : errorIndexes) {
             Integer error = (sentVector.get(index) + 1) % 2;
-            System.out.println(index);
+            //System.out.println(index);
             sentVector.removeElementAt(index);
             sentVector.insertElementAt(error, index);
         }
