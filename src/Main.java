@@ -243,6 +243,11 @@ public class Main {
         System.out.println(MESSYENCODEDBYTEMESSAGE);
         Vector<Integer> DECODEDBYTEMESSAGE = RC.decode(MESSYENCODEDBYTEMESSAGE);
         System.out.println(DECODEDBYTEMESSAGE);
+
+        // Testing of ECCPipeline
+        ECCPipeLine PL = new ECCPipeLine(NC4RC, RC);
+        System.out.println(PL.process(BYTEMESSAGE));
+
     }
 
 }
