@@ -3,7 +3,7 @@ import java.util.Vector;
 
 // A RepetitionCode is a new RepetitionCode(Integer, Integer)
 // Interpretation: A Repetition code used for error-correcting
-public class RepetitionCode {
+public class RepetitionCode implements ECC {
     Integer messageLength;
     Integer n;
 
@@ -45,7 +45,7 @@ public class RepetitionCode {
         return verticalVector.mult(this.generate()).toVector();
     }
 
-    // Decodes a message
+    // Decodes a collection message
     public Vector<Integer> decode(Vector encodedMessage) {
         Matrix messyMessage = new Matrix(encodedMessage, this.messageLength);
         Vector<Integer> cleanMessageVector = new Vector(this.messageLength * this.n);
