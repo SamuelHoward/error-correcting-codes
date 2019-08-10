@@ -248,6 +248,10 @@ public class Main {
         ECCPipeLine PL = new ECCPipeLine(NC4RC, RC);
         System.out.println(PL.process(BYTEMESSAGE));
 
+        // Testing of ReedMullerCode
+        ReedMullerCode RMC = new ReedMullerCode(3, 2);
+        System.out.println(RMC.generate().rowValues());
+
     }
 
 }
