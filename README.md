@@ -42,7 +42,7 @@ There are many types of error-correcting codes, so each type implemented in this
         // Decode the erroneous message using the same RepetitionCode object used to encode the message originally
         Vector<Integer> DECODEDBYTEMESSAGE = RC.decode(MESSYENCODEDBYTEMESSAGE);
         
-# How can I get add to this?
+# How can I add to this?
 
 There are many types of error-correcting codes and I hope to include many of these types in this library, each as a class. If you are interested in error-correcting codes too, you might like to try implementing a type of error-correcting code into this library yourself. Otherwise, feel free to make suggestions to the existing code.
 
